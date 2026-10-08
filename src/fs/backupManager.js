@@ -43,4 +43,20 @@ async function createBackup(src, dest) {
   return { backupDir, count };
 }
 
-module.exports = { createBackup, copyDirectory };
+// ========== ВОССТАНОВЛЕНИЕ ИЗ БЭКАПА (новое) ==========
+async function restoreFromBackup(backupDir, targetDir) {
+  const backupPath = path.resolve(backupDir);
+  const targetPath = path.resolve(targetDir);
+
+  try {
+    await fs.access(backupPath);
+  } catch {
+    throw new Error(`Резервная копия "${backupDir}" не найдена`);
+  }
+
+  await fs.mkdir(targetPath, { recursive: true });
+  const count = await copyDirectory(backupPath, targetPath);
+  return { targetDir: targetPath, count };
+}
+
+module.exports = { createBackup, copyDirectory, restoreFromBackup };
