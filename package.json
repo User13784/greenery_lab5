@@ -1,0 +1,17 @@
+{
+  "name": "greenery-cli",
+  "version": "1.0.0",
+  "description": "CLI-приложение для управления товарами магазина мебели Greenery",
+  "main": "app.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node app.js",
+    "event-loop": "node experiments/event-loop.js"
+  },
+  "keywords": ["nodejs", "cli", "fs", "streams", "workers"],
+  "author": "Твоё Имя",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
